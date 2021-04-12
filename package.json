@@ -1,0 +1,31 @@
+{
+  "name": "explore_api_demo",
+  "version": "1.0.0",
+  "description": "It's a demo in which i explore the contents of an API and restructure it using the holy trinity of javascript Array.prototype functions: map, filter and reduce.",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ju5tu5/explore_api_demo.git"
+  },
+  "keywords": [
+    "node",
+    "api",
+    "demo"
+  ],
+  "author": "J.P.Sturkenboom <j.p.sturkenboom@hva.nl>",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/ju5tu5/explore_api_demo/issues"
+  },
+  "homepage": "https://github.com/ju5tu5/explore_api_demo#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "socket.io": "^4.0.1"
+  }
+}
