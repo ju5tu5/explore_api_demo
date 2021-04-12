@@ -26,8 +26,8 @@ function filterLastfmRecentTracks (data) {
 
 function reduceLastfmRecentTracks (data) {
   return data.recenttracks.track.reduce((accumulator, item) => {
-    return accumulator +  item.artist['#text'] + ', '
-  },'')
+    return accumulator + item.artist['#text'] + ', '
+  }, '')
 }
 
 // Get the data from lastFM
@@ -39,9 +39,9 @@ fetch('http://ws.audioscrobbler.com/2.0/?' + new URLSearchParams({
   user: 'ju5tu5nl'
 }))
   .then(response => response.json())
-  .then(data => console.table(reduceLastfmRecentTracks(data)))
+  // Call the above 3 functions right here :)
+  .then(data => console.table(cleanLastfmRecentTracks(data)))
   .catch(errObj => console.error(errObj))
-
 
 // Server static files
 app.use(express.static(path.resolve('public')))
@@ -59,4 +59,3 @@ io.on('connection', (socket) => {
 http.listen(port, () => {
   console.log('Listening on port ', port)
 })
-
