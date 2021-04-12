@@ -9,24 +9,24 @@ const io = require('socket.io')(http)
 const port = process.env.PORT || 4242
 
 function cleanLastfmRecentTracks (data) {
-  return data.recenttracks.track.map(item => {
+  return data.recenttracks.track.map(track => {
     return {
-      artist: item.artist['#text'],
-      song: item.name,
-      date: item.date.uts
+      artist: track.artist['#text'],
+      song: track.name,
+      date: track.date.uts
     }
   })
 }
 
 function filterLastfmRecentTracks (data) {
-  return data.recenttracks.track.filter(item => {
-    return item.artist['#text'] === 'The Flashbulb'
+  return data.recenttracks.track.filter(track => {
+    return track.artist['#text'] === 'The Flashbulb'
   })
 }
 
 function reduceLastfmRecentTracks (data) {
-  return data.recenttracks.track.reduce((accumulator, item) => {
-    return accumulator + item.artist['#text'] + ', '
+  return data.recenttracks.track.reduce((accumulator, track) => {
+    return accumulator + track.artist['#text'] + ', '
   }, '')
 }
 
@@ -34,7 +34,7 @@ function reduceLastfmRecentTracks (data) {
 fetch('http://ws.audioscrobbler.com/2.0/?' + new URLSearchParams({
   api_key: process.env.LASTFM_API_KEY,
   format: 'json',
-  limit: 200,
+  limit: 30,
   method: 'user.getRecentTracks',
   user: 'ju5tu5nl'
 }))
